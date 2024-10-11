@@ -18,7 +18,7 @@ function updateSleep(){
     let dayOfWk = document.querySelector('input[name="day"]:checked');
     let hours = $("#sleepDuration").value;
 
-    if(isNaN(sleepDuration) || !dayOfWk) {
+    if(isNaN(hours) || !dayOfWk) {
         alert("Enter a valid number for sleep duration");
         $("#sleepDuration").value = "";
     } else {
