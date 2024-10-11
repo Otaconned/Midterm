@@ -1,14 +1,12 @@
-'use strict';
-
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let duration = [6,7,8,9,5,6,4];
 
 let $ = function(id) { return document.querySelector("#"+id); };
 
 document.addEventListener("DOMContentLoaded", function() {
-    $("#updateBtn").addEventListener("click", updateSleep);
-    $("#averageBtn").addEventListener("click", displaySleepDuration);
-    $("#trackBtn").addEventListener("mouseover", displaySleepDuration);
+    $("updateBtn").addEventListener("click", updateSleep);
+    $("averageBtn").addEventListener("click", displaySleepDuration);
+    $("trackBtn").addEventListener("mouseover", displaySleepDuration);
 
 });
 
@@ -20,16 +18,16 @@ function updateSleep(){
 
     if(sleepDuration === "" || isNaN(sleepDuration)) {
         alert("Enter a valid number for sleep duration");
-        $("#sleepDuration").value = "";
+        $("sleepDuration").value = "";
     } 
 
     if(selectedDay) {
         let dayIndex = days.findIndex(day => selectedDay.value.toLowerCase().includes(day.toLowerCase()));
-        durations[dayIndex] = parseFloat(sleepDuration);
+        duration[dayIndex] = parseFloat(sleepDuration);
         alert("Your updated sleep duration is " + sleepDuration + " hrs on " + days[dayIndex]);
     }
     
-    $("#sleepDuration").value = "";
+    $("sleepDuration").value = "";
 }
 
 function ShowAverageMinMaxSleep() {
@@ -42,21 +40,21 @@ function ShowAverageMinMaxSleep() {
     }
     let averageSleep = (totalSleep/duration.length).toFixed(2);
 
-    let display = $("#averageSleep");
-    display.value = "Average: " + averageSleep " Minimal: " + minSleep + " Maximal: " + maxSleep;
+    let display = $("averageSleep");
+    display.value = "Average: " + averageSleep + " Minimal: " + minSleep + " Maximal: " + maxSleep;
     display.style.color = "green";
     display.style.borderColor = "red";
 }
 
 function displaySleepDuration() {
-    let table = $("#sleep_table");
+    let table = $("sleep_table");
     table.innerHTML = "";
 
-    let username = $("#username").value;
+    let username = $("username").value;
 
     let tableParagraph = document.createElement("p");
     tableParagraph.textContent = "Hey " + username + "! You slept less than five hours on the following days";
-    $("#result_here").appendChild(tableParagraph);
+    $("result_here").appendChild(tableParagraph);
 
     let headerRow = document.createElement("tr");
 
@@ -71,7 +69,7 @@ function displaySleepDuration() {
     table.appendChild(headerRow);
 
     for (let i = 0; i < days.length; i++){
-        if(durations[i] < 5) {
+        if(duration[i] < 5) {
             let row = document.createElement("tr");
 
             let daysColumn = document.createElement("td");
