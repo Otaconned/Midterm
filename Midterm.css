@@ -22,6 +22,12 @@ label {
 
 }
 
+label[for="sleepDuration", label[for="averageSleep"] {
+    float: none;
+    width: 10em;
+    margin-right: 1em;
+}
+
 input{
     width: 92%;
     padding: 15px;
