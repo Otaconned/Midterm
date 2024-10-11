@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
     $("updateBtn").addEventListener("click", updateSleep);
     $("averageBtn").addEventListener("click", ShowAverageMinMaxSleep);
     $("trackBtn").addEventListener("mouseover", displaySleepDuration);
-
+    $("your_details").addEventListener("submit", function(event){
+        event.preventDefault();
+    });
 });
 
 // define functions here
