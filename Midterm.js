@@ -1,3 +1,5 @@
+'use strict';
+
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let duration = [6,7,8,9,5,6,4];
 
@@ -5,7 +7,7 @@ let $ = function(id) { return document.querySelector("#"+id); };
 
 document.addEventListener("DOMContentLoaded", function() {
     $("updateBtn").addEventListener("click", updateSleep);
-    $("averageBtn").addEventListener("click", displaySleepDuration);
+    $("averageBtn").addEventListener("click", ShowAverageMinMaxSleep);
     $("trackBtn").addEventListener("mouseover", displaySleepDuration);
 
 });
