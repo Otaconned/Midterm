@@ -45,12 +45,15 @@ button {
     width: 100%;
 }
 
+#days {
+    display: flex;
+    align-items: center;
+}
+
 #days input[type="radio"] {
-    display: inline-block;
     margin-right: 5px;
 }
 
 #days label {
-    display: inline-block;
     margin-right: 15px;
 }
