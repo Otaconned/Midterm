@@ -18,15 +18,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function updateSleep(){
     let selectedDay = document.querySelector('input[name="day"]:checked');
-    let sleepDuration = $("#sleepDuration").value;
+    let sleepDuration = $("sleepDuration").value;
 
-    if(sleepDuration === "" || isNaN(sleepDuration)) {
+    if(!sleepDuration || isNaN(sleepDuration)) {
         alert("Enter a valid number for sleep duration");
         $("sleepDuration").value = "";
+        return;
     } 
 
     if(selectedDay) {
-        let dayIndex = days.findIndex(day => selectedDay.value.toLowerCase().includes(day.toLowerCase()));
+        let dayIndex = days.indexOf(selectedDay.value);
         duration[dayIndex] = parseFloat(sleepDuration);
         alert("Your updated sleep duration is " + sleepDuration + " hrs on " + days[dayIndex]);
     }
@@ -52,39 +53,19 @@ function ShowAverageMinMaxSleep() {
 
 function displaySleepDuration() {
     let table = $("sleep_table");
-    table.innerHTML = "";
-
+    let resultHere = $("result_here");
     let username = $("username").value;
 
-    let tableParagraph = document.createElement("p");
-    tableParagraph.textContent = "Hey " + username + "! You slept less than five hours on the following days";
-    $("result_here").appendChild(tableParagraph);
+    resultHere.innerHTML = 'User ${username} slept less than five hours on the following days';
+    sleepTable.innerHTML = "";
 
-    let headerRow = document.createElement("tr");
+    let tableContent = "<tr><th>Day</th><th>Duration (hrs)</th></tr>";
 
-    let nameHeader = document.createElement("th");
-    nameHeader.textContent="Day";
-    headerRow.appendChild(dayHeader);
-
-    let hourHeader = document.createElement("th");
-    hourHeader.textContent="Hour";
-    headerRow.appendChild(hourHeader);
-
-    table.appendChild(headerRow);
-
-    for (let i = 0; i < days.length; i++){
+    for (let i = 0; i < duration.length; i++){
         if(duration[i] < 5) {
-            let row = document.createElement("tr");
-
-            let daysColumn = document.createElement("td");
-            daysColumn.textContent = days[i];
-            row.appendChild(daysColumn);
-    
-            let hoursColumn = document.createElement("td");
-            hoursColumn.textContent = duration[i];
-            row.appendChild(hoursColumn);
-    
-            table.appendChild(row);  
+            tableContent += '<tr><td>${days[i]}</td><td>${duration[i]}</td></tr>';
         }
     }
+
+    sleepTable.innterHTML = tableContent;
 }
