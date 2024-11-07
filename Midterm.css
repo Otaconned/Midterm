@@ -6,7 +6,7 @@ body {
     border: 5px solid green;
 }
 
-h1 {
+h1, h2 {
     color: green;
     margin: 0 0 .5em;
 }
@@ -19,6 +19,7 @@ label {
     float: left;
     width: 10em;
     margin-right: 1em;
+    font-weight: bold;
 
 }
 
@@ -42,7 +43,12 @@ button {
     padding: 10px;
     color: black;
     text-align: center;
-    width: 100%;
+    width: 80%;
+}
+
+button:hover {
+    opacity: 30%;
+    cursor: pointer;
 }
 
 label[for="chooseDay"]{
@@ -52,13 +58,13 @@ label[for="chooseDay"]{
 
 #days {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    gap: 10px;
 }
 
-#days input[type="radio"] {
-    margin-right: 5px;
-}
+
 
 #days label {
-    margin-right: 15px;
+    display: flex;
+    align-items: center;
 }
